@@ -9,8 +9,18 @@
  *
  * The result should be [-1, 150, 160, 170, -1, -1, 180, 190]
  */
-function sortByHeight(/* arr */) {
-  throw new Error('Not implemented');
+function sortByHeight(arr) {
+  const filtArr = arr.filter((element) => element !== -1).sort((a, b) => a - b);
+  const newArr = arr.reduce((a, c) => {
+    if (c !== -1) {
+      a.push(filtArr[0]);
+      filtArr.shift();
+    } else {
+      a.push(-1);
+    }
+    return a;
+  }, []);
+  return newArr;
 }
 
 module.exports = sortByHeight;

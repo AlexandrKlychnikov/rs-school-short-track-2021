@@ -27,5 +27,5 @@ function getMatrixElementsSum(matrix) {
   }
   return sum;
 }
-
+// npm run lint -- --fix
 module.exports = getMatrixElementsSum;
