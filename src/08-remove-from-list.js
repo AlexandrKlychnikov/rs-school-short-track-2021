@@ -17,8 +17,37 @@
  * }
  */
 
-function removeKFromList(/* l, k */) {
-  throw new Error('Not implemented');
+function removeKFromList(l, k) {
+  function ListNode(x) {
+    this.value = x;
+    this.next = null;
+  }
+  function convertListToArray(list, arr = []) {
+    arr.push(list.value);
+    if (list.next) {
+      convertListToArray(list.next, arr);
+    }
+    return arr;
+  }
+  function convertArrayToList(arr) {
+    const list = arr.reverse().reduce((acc, cur) => {
+      if (acc) {
+        const node = new ListNode(cur);
+        node.next = acc;
+        return node;
+      }
+      return new ListNode(cur);
+    }, null);
+    return list;
+  }
+  const arr = convertListToArray(l);
+  const arrOut = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== k) {
+      arrOut.push(arr[i]);
+    }
+  }
+  return convertArrayToList(arrOut);
 }
 
 module.exports = removeKFromList;
