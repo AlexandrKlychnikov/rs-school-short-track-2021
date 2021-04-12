@@ -25,7 +25,7 @@ class Queue {
   }
 
   dequeue() {
-    const first = this.arr[0];
+    const first = this.arr[0]; 
     this.arr.shift();
     return first;
   }
